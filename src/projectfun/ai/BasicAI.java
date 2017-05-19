@@ -6,7 +6,7 @@
 package projectfun.ai;
 
 /**
- *
+ * ab
  * @author tuvenat18
  */
 public class BasicAI {
