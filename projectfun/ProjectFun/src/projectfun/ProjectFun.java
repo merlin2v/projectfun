@@ -16,8 +16,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 import javafx.scene.Group;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -36,18 +38,23 @@ public class ProjectFun extends Application {
         Button play = new Button();
 
         play.setText("Play");
-        size.setText("Set the Size");
+        size.setText("How to play");
         btn.setText("Exit");
         btn.setStyle("-fx-background-color: #0066ff; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-text-fill: white; -fx-background-insets: 0, 1, 1; -fx-effect: dropshadow(three-pass-box, #0000cc, 5, 0.5, 0, 0)");
         play.setStyle("-fx-background-color: #0066ff; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-text-fill: white; -fx-background-insets: 0, 1, 1; -fx-effect: dropshadow(three-pass-box, #0000cc, 5, 0.5, 0, 0)");
         size.setStyle("-fx-background-color: #0066ff; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-text-fill: white; -fx-background-insets: 0, 1, 1; -fx-effect: dropshadow(three-pass-box, #0000cc, 5, 0.5, 0, 0)");
-        
+        //
 
         //             <Images>
         final ImageView backgroundImage = new ImageView();
-        Image tree = new Image(new FileInputStream("C:\\Users\\kungeth17\\Desktop\\tree.jpg"));
+        final ImageView helpBox = new ImageView();
+        Image helpIMG = new Image(new FileInputStream("C:\\Users\\kungeth17\\Documents\\NetBeansProjects\\projectfun\\img\\shooter help.png"));
+        Image tree = new Image(new FileInputStream("C:\\Users\\kungeth17\\Documents\\NetBeansProjects\\projectfun\\img\\shooter background.png"));
+        helpBox.setImage(helpIMG);
         backgroundImage.setImage(tree);
 
+        //             <Text>
+       
         //             <StackPanes>
         StackPane root = new StackPane();
         StackPane gameScreen = new StackPane();
@@ -66,16 +73,18 @@ public class ProjectFun extends Application {
         size.setTranslateY(50);
 
         //             <Adding Elements>
-        //root.getChildren().addAll(backgroundImage);
+        
+        root.getChildren().addAll(backgroundImage, helpBox);
         root.getChildren().add(btn);
         root.getChildren().add(size);
         root.getChildren().add(play);
         gameScreen.getChildren().add(player);
         Scene scene = new Scene(root, 300, 250);
-        Scene idk = new Scene(new Group(), 300, 250);
-        idk.getStylesheets().add("path/stylesheet.css");
         Scene game = new Scene(gameScreen, 300, 250);
         
+        helpBox.setTranslateX(142);
+        helpBox.setTranslateY(180);
+        helpBox.setVisible(false);
     
 
         //             <Window>
@@ -90,6 +99,7 @@ public class ProjectFun extends Application {
         
 
         //             <Events>
+        
         play.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 primaryStage.setScene(game);
@@ -107,10 +117,11 @@ public class ProjectFun extends Application {
         size.setOnAction(new EventHandler<ActionEvent>() {
 
             public void handle(ActionEvent event) {
-                if (primaryStage.getHeight() == 700) {
-                    primaryStage.setHeight(500);
-                } else {
-                    primaryStage.setHeight(700);
+                if (helpBox.isVisible()) {
+                    helpBox.setVisible(false);
+                }
+                else if (!helpBox.isVisible()) {
+                    helpBox.setVisible(true);
                 }
             }
         });
