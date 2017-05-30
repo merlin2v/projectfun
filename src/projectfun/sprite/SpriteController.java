@@ -16,7 +16,7 @@ public abstract class SpriteController {
     public abstract AbstractSprite getSprite();
     public void move(double x,double y,double z){
         this.getSprite().setTranslateX(x);
-        this.getSprite().setTranslateX(y);
-        this.getSprite().setTranslateX(z);
+        this.getSprite().setTranslateY(y);
+        this.getSprite().setTranslateZ(z);
     }
 }
