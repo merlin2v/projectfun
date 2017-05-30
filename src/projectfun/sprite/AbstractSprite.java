@@ -16,26 +16,12 @@ import javafx.scene.Node;
  *X
  * @author tuvenat18
  */
-class AbstractSprite extends javafx.scene.Node{
+class AbstractSprite extends javafx.scene.Group{
     
-    @Override
-    protected NGNode impl_createPeer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public BaseBounds impl_computeGeomBounds(BaseBounds bounds, BaseTransform tx) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    protected boolean impl_computeContains(double localX, double localY) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Object impl_processMXNode(MXNodeAlgorithm alg, MXNodeAlgorithmContext ctx) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public abstract Scene getSpriteScene();
+    public abstract SpriteController getSpriteController();
+    protected AbstractSprite getThis(){
+        return this;
     }
     
 }
