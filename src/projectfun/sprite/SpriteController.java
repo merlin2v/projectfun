@@ -21,14 +21,23 @@ public abstract class SpriteController {
     }
     private Timer Glider=new Timer("Sprite Glider");
     public void glide(double x,double y,double z,double buffer,long time){
-        Glider.scheduleAtFixedRate(mover(x, y, z, buffer, time), 0, time);
+        int count=0;
+        Glider.scheduleAtFixedRate(mover(x, y, z, buffer, time, count), 0, time);
+        Glider.schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+                Glider.cancel();
+            }
+        }, time);
     }
-    TimerTask mover(double x,double y,double z,double buffer,double time){
+    TimerTask mover(double x,double y,double z,double buffer,double time,int count){
         return new TimerTask() {
 
             @Override
             public void run() {
-                move(x, y, z);
+                double d =time/buffer;
+                move(x/d, y/d, z/d);
             }
         };
     }
