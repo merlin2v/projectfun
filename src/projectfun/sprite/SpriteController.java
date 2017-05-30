@@ -30,6 +30,6 @@ public abstract class SpriteController {
             public void run() {
                 move(x, y, z);
             }
-        }
+        };
     }
 }
