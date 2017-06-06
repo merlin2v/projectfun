@@ -5,10 +5,12 @@
  */
 package projectfun;
 
+import javafx.scene.input.MouseEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -22,11 +24,17 @@ import javafx.scene.Group;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+
 /**
  *
  * @author tuvenat18
  */
 public class ProjectFun extends Application {
+public static final String buttonColor = "#0066ff";
+public static final String buttonHighlight = "#0000cc";
+public static final String buttonHColor = "#00fff0";
+public static final String buttonClickedColor = "#ffffff";
+public static final String buttonClickedBackground = "#45AEE2";
 
     @Override
     public void start(Stage primaryStage) throws FileNotFoundException {
@@ -40,9 +48,9 @@ public class ProjectFun extends Application {
         play.setText("Play");
         size.setText("How to play");
         btn.setText("Exit");
-        btn.setStyle("-fx-background-color: #0066ff; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-text-fill: white; -fx-background-insets: 0, 1, 1; -fx-effect: dropshadow(three-pass-box, #0000cc, 5, 0.5, 0, 0)");
-        play.setStyle("-fx-background-color: #0066ff; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-text-fill: white; -fx-background-insets: 0, 1, 1; -fx-effect: dropshadow(three-pass-box, #0000cc, 5, 0.5, 0, 0)");
-        size.setStyle("-fx-background-color: #0066ff; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-text-fill: white; -fx-background-insets: 0, 1, 1; -fx-effect: dropshadow(three-pass-box, #0000cc, 5, 0.5, 0, 0)");
+        btn.setStyle("-fx-background-color: " + buttonColor + "; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-text-fill: white; -fx-background-insets: 0, 1, 1; -fx-effect: dropshadow(three-pass-box, " + buttonHighlight + ", 5, 0.5, 0, 0)");
+        play.setStyle("-fx-background-color: " + buttonColor + "; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-text-fill: white; -fx-background-insets: 0, 1, 1; -fx-effect: dropshadow(three-pass-box, " + buttonHighlight + ", 5, 0.5, 0, 0)");
+        size.setStyle("-fx-background-color: " + buttonColor + "; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-text-fill: white; -fx-background-insets: 0, 1, 1; -fx-effect: dropshadow(three-pass-box, " + buttonHighlight + ", 5, 0.5, 0, 0)");
         //
 
         //             <Images>
@@ -100,6 +108,90 @@ public class ProjectFun extends Application {
 
         //             <Events>
         
+        EventHandler<MouseEvent> buttonMouseOver = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                size.setStyle("-fx-background-color: " + buttonColor + "; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-text-fill: white; -fx-background-insets: 0, 1, 1; -fx-effect: dropshadow(three-pass-box," + buttonHColor + ", 5, 0.5, 0, 0)");
+            }
+        };
+        
+        EventHandler<MouseEvent> buttonMouseOver2 = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                btn.setStyle("-fx-background-color: " + buttonColor + "; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-text-fill: white; -fx-background-insets: 0, 1, 1; -fx-effect: dropshadow(three-pass-box, " + buttonHColor + ", 5, 0.5, 0, 0)");
+            }
+        };
+        
+        EventHandler<MouseEvent> buttonMouseOver3 = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                play.setStyle("-fx-background-color: " + buttonColor + "; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-text-fill: white; -fx-background-insets: 0, 1, 1; -fx-effect: dropshadow(three-pass-box, " + buttonHColor + ", 5, 0.5, 0, 0)");
+            }
+        };
+        
+        EventHandler<MouseEvent> buttonUnMouseOver = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                size.setStyle("-fx-background-color: " + buttonColor + "; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-text-fill: white; -fx-background-insets: 0, 1, 1; -fx-effect: dropshadow(three-pass-box, " + buttonHighlight + ", 5, 0.5, 0, 0)");
+            }
+        };
+        
+        EventHandler<MouseEvent> buttonUnMouseOver2 = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                btn.setStyle("-fx-background-color: " + buttonColor + "; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-text-fill: white; -fx-background-insets: 0, 1, 1; -fx-effect: dropshadow(three-pass-box, " + buttonHighlight + ", 5, 0.5, 0, 0)");
+            }
+        };
+        
+        EventHandler<MouseEvent> buttonUnMouseOver3 = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                play.setStyle("-fx-background-color: " + buttonColor + "; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-text-fill: white; -fx-background-insets: 0, 1, 1; -fx-effect: dropshadow(three-pass-box, " + buttonHighlight + ", 5, 0.5, 0, 0)");
+            }
+        };
+       
+        EventHandler<MouseEvent> buttonClick = new EventHandler<MouseEvent>() {
+          @Override
+          public void handle(MouseEvent event) {
+              size.setStyle("-fx-background-color: " + buttonClickedBackground + "; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-text-fill: white; -fx-background-insets: 0, 1, 1; -fx-effect: dropshadow(three-pass-box, " + buttonClickedColor + ", 5, 0.5, 0, 0)");
+          } 
+        };
+        
+        EventHandler<MouseEvent> buttonUnClick = new EventHandler<MouseEvent>() {
+          @Override
+          public void handle(MouseEvent event) {
+              size.setStyle("-fx-background-color: " + buttonColor + "; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-text-fill: white; -fx-background-insets: 0, 1, 1; -fx-effect: dropshadow(three-pass-box, " + buttonHColor + ", 5, 0.5, 0, 0)");
+          } 
+        };
+        
+        EventHandler<MouseEvent> buttonClick2 = new EventHandler<MouseEvent>() {
+          @Override
+          public void handle(MouseEvent event) {
+              btn.setStyle("-fx-background-color: " + buttonClickedBackground + "; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-text-fill: white; -fx-background-insets: 0, 1, 1; -fx-effect: dropshadow(three-pass-box, " + buttonClickedColor + ", 5, 0.5, 0, 0)");
+          } 
+        };
+        
+        EventHandler<MouseEvent> buttonUnClick2 = new EventHandler<MouseEvent>() {
+          @Override
+          public void handle(MouseEvent event) {
+              btn.setStyle("-fx-background-color: " + buttonColor + "; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-text-fill: white; -fx-background-insets: 0, 1, 1; -fx-effect: dropshadow(three-pass-box, " + buttonHColor + ", 5, 0.5, 0, 0)");
+          } 
+        };
+        
+        EventHandler<MouseEvent> buttonClick3 = new EventHandler<MouseEvent>() {
+          @Override
+          public void handle(MouseEvent event) {
+              play.setStyle("-fx-background-color: " + buttonClickedBackground + "; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-text-fill: white; -fx-background-insets: 0, 1, 1; -fx-effect: dropshadow(three-pass-box, " + buttonClickedColor + ", 5, 0.5, 0, 0)");
+          } 
+        };
+        
+        EventHandler<MouseEvent> buttonUnClick3 = new EventHandler<MouseEvent>() {
+          @Override
+          public void handle(MouseEvent event) {
+              play.setStyle("-fx-background-color: " + buttonColor + "; -fx-border-width: 3px; -fx-background-radius: 10px; -fx-text-fill: white; -fx-background-insets: 0, 1, 1; -fx-effect: dropshadow(three-pass-box, " + buttonHColor + ", 5, 0.5, 0, 0)");
+          } 
+        };
+        
         play.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 primaryStage.setScene(game);
@@ -113,7 +205,22 @@ public class ProjectFun extends Application {
                 System.exit(0);
             }
         });
-
+        
+        size.setOnMouseEntered(buttonMouseOver);
+        size.setOnMouseExited(buttonUnMouseOver);
+        btn.setOnMouseEntered(buttonMouseOver2);
+        btn.setOnMouseExited(buttonUnMouseOver2);
+        play.setOnMouseEntered(buttonMouseOver3);
+        play.setOnMouseExited(buttonUnMouseOver3);
+        
+        size.setOnMousePressed(buttonClick);
+        size.setOnMouseReleased(buttonUnClick);
+        btn.setOnMousePressed(buttonClick2);
+        btn.setOnMouseReleased(buttonUnClick2);
+        play.setOnMousePressed(buttonClick3);
+        play.setOnMouseReleased(buttonUnClick3);
+        
+        
         size.setOnAction(new EventHandler<ActionEvent>() {
 
             public void handle(ActionEvent event) {
