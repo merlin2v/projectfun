@@ -34,7 +34,7 @@ public static final String buttonColor = "#0066ff";
 public static final String buttonHighlight = "#0000cc";
 public static final String buttonHColor = "#00fff0";
 public static final String buttonClickedColor = "#ffffff";
-public static final String buttonClickedBackground = "#45AEE2";
+public static final String buttonClickedBackground = "#45aee2";
 
     @Override
     public void start(Stage primaryStage) throws FileNotFoundException {
@@ -240,9 +240,5 @@ public static final String buttonClickedBackground = "#45AEE2";
     public static void main(String[] args) {
         launch(args);
     }
-
-    public static void createGS(StackPane g) {
-
-    }
-
+    
 }
